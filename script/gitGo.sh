@@ -1,6 +1,7 @@
 if [ $1 = "push" ]; then
     git add .
-    git commit -m "$1"
+    # commit 写入时间
+    git commit -m "$(date +'%Y-%m-%d %H:%M:%S')"
     git push
 fi
 
