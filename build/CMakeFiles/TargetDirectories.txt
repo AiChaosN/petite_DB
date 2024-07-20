@@ -1,0 +1,6 @@
+/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles/PetiteDB.dir
+/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles/edit_cache.dir
+/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles/rebuild_cache.dir
+/home/aichaos/mylab/demodb/petite_DB/build/third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir
+/home/aichaos/mylab/demodb/petite_DB/build/third_party/sql-parser/CMakeFiles/edit_cache.dir
+/home/aichaos/mylab/demodb/petite_DB/build/third_party/sql-parser/CMakeFiles/rebuild_cache.dir

@@ -15,7 +15,12 @@ only one vactor of int.
 - join
 - select
 
+## .sql file To AST
 
-## .mlir file To .ll file
+## AST To my.mlir file
+
+## my.mlir file To other.mlir file
+
+## other.mlir file To .ll file
 
 ## .ll file To RUN
