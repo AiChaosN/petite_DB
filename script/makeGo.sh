@@ -7,5 +7,5 @@ mkdir build
 cd build
 cmake ..
 
-echo "make go !!!!!""
+echo "make go !!!!!"
 make

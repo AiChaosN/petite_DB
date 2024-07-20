@@ -15,8 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/hyrise-sql-parser.dir/src/sql/statements.cpp.o.d"
   "CMakeFiles/hyrise-sql-parser.dir/src/util/sqlhelper.cpp.o"
   "CMakeFiles/hyrise-sql-parser.dir/src/util/sqlhelper.cpp.o.d"
-  "libhyrise-sql-parser.a"
   "libhyrise-sql-parser.pdb"
+  "libhyrise-sql-parser.so"
 )
 
 # Per-language clean rules from dependency scanning.

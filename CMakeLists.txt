@@ -21,5 +21,3 @@ add_executable(PetiteDB ${SOURCES})
 
 # 链接sql-parser库
 target_link_libraries(PetiteDB hyrise-sql-parser)
-
-
