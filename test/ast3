@@ -1,0 +1,11 @@
+Parsed successfully!
+SELECT statement found
+  SELECT list:
+    *
+From table:
+    Table type: 3
+WHERE clause:
+    Operator: 10
+      Column: t1.id
+      Column: t2.id
+

@@ -1,0 +1,42 @@
+Parsed successfully!
+SELECT statement found
+  SELECT list:
+    Column: t1.col1
+    Column: t2.col2
+    Column: t3.col3
+From table:
+    Table join:
+  Left: 
+      Table join:
+  Left: 
+        Table name: t1
+  Right: 
+        Table name: t2
+  Condition: 
+        Operator: 10
+          Column: t1.col1
+          Column: t2.col1
+
+
+  Right: 
+      Table name: t3
+  Condition: 
+      Operator: 10
+        Column: t2.col2
+        Column: t3.col2
+
+
+WHERE clause:
+    Operator: 19
+      Operator: 10
+        Column: t1.col4
+        Literal string: example
+
+      Operator: 10
+        Column: t2.col5
+        Literal string: another_example
+
+
+ORDER BY:
+    Column: t3.col6
+ DESC

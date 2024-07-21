@@ -1,0 +1,11 @@
+Parsed successfully!
+SELECT statement found
+  SELECT list:
+    *
+From table:
+    Table name: t1
+WHERE clause:
+    Operator: 10
+      Column: id
+      Literal int: 1
+

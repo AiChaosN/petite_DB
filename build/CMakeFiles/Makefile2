@@ -95,7 +95,7 @@ third_party/sql-parser/clean: third_party/sql-parser/CMakeFiles/hyrise-sql-parse
 # Target rules for target CMakeFiles/PetiteDB.dir
 
 # All Build rule for target.
-CMakeFiles/PetiteDB.dir/all: third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/all
+CMakeFiles/PetiteDB.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num=1,2,3 "Built target PetiteDB"
@@ -103,7 +103,7 @@ CMakeFiles/PetiteDB.dir/all: third_party/sql-parser/CMakeFiles/hyrise-sql-parser
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PetiteDB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PetiteDB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
 .PHONY : CMakeFiles/PetiteDB.dir/rule

@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.o CMakeFiles/PetiteDB.dir/src/petite.cpp.o -o PetiteDB  -Wl,-rpath,/home/aichaos/mylab/demodb/petite_DB/build/third_party/sql-parser third_party/sql-parser/libhyrise-sql-parser.so
+/usr/bin/c++ CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.o CMakeFiles/PetiteDB.dir/src/petite.cpp.o -o PetiteDB  -lsqlparser -lstdc++

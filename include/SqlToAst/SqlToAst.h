@@ -9,7 +9,7 @@ class SqlToAst {
 public:
     SqlToAst(const std::string& filePath);
     bool parseSql();
-    void printAst();
+    void printAst(const std::string& outputFilePath);
 
 private:
     std::string filePath_;
@@ -17,4 +17,3 @@ private:
 };
 
 #endif // SQL_TO_AST_H
-

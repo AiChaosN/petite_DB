@@ -1,27 +1,17 @@
-# For a better template to copy, see examples/standalone
-add_subdirectory(include)
+cmake_minimum_required(VERSION 3.10)
+project(Demo)
 
-set(LLVM_LINK_COMPONENTS
-  Support
-  )
+set(CMAKE_CXX_STANDARD 17)
 
-add_toy_chapter(toyc-ch2
-  toyc.cpp
-  parser/AST.cpp
-  mlir/MLIRGen.cpp
-  mlir/Dialect.cpp
+# 添加 hsql 的头文件路径
+include_directories(${CMAKE_SOURCE_DIR}/../third_party/sql-parser/src)
 
-  DEPENDS
-  ToyCh2OpsIncGen
+# 添加可执行文件
+add_executable(example example.cpp)
 
-  )
-include_directories(include/)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/include/)
-target_link_libraries(toyc-ch2
-  PRIVATE
-    MLIRAnalysis
-    MLIRFunctionInterfaces
-    MLIRIR
-    MLIRParser
-    MLIRSideEffectInterfaces
-    MLIRTransforms)
+# 设置链接库路径
+link_directories(${CMAKE_SOURCE_DIR}/../third_party/sql-parser)
+
+# 链接 hsql 库
+target_link_libraries(example sqlparser stdc++)
+

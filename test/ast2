@@ -1,0 +1,23 @@
+Parsed successfully!
+SELECT statement found
+  SELECT list:
+    Column: t1.age
+From table:
+    Table name: t1
+WHERE clause:
+    Operator: 19
+      Operator: 19
+        Operator: 10
+          Column: id
+          Literal int: 1
+
+        Operator: 10
+          Column: name
+          Literal string: zhangsan
+
+
+      Operator: 14
+        Column: age
+        Literal int: 18
+
+
