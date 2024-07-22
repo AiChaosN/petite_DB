@@ -4,11 +4,13 @@ project(PetiteDB)
 # 编译设置
 set(CMAKE_CXX_STANDARD 11)
 
-# 添加sql-parser库
-add_subdirectory(third_party/sql-parser)
-
 # include目录
 include_directories(include)
+
+
+# 第三方库部分
+# 添加sql-parser库
+add_subdirectory(third_party/sql-parser)
 
 
 # 添加 hsql 的头文件路径

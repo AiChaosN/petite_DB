@@ -1,335 +1,169 @@
-//===- Ops.td - Toy dialect operation definitions ----------*- tablegen -*-===//
-//
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-//
 //===----------------------------------------------------------------------===//
 //
-// Defines the operations of the Toy dialect.
+// Defines the operations of the Petite dialect.
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef TOY_OPS
-#define TOY_OPS
 
-include "mlir/IR/OpBase.td"
+#ifndef PETITE_OPS
+#define PETITE_OPS
+
 include "mlir/Interfaces/FunctionInterfaces.td"
 include "mlir/IR/SymbolInterfaces.td"
 include "mlir/Interfaces/SideEffectInterfaces.td"
 
-// Provide a definition of the 'toy' dialect in the ODS framework so that we
-// can define our operations.
-def Toy_Dialect : Dialect {
-  let name = "toy";
-  let cppNamespace = "::mlir::toy";
+
+include "PetiteMlir/TableTypes.td"
+//第一步，定义 petite dialect 在 ODS 框架中的定义 （Operation Definition Specification）
+def Petite_Dialect : Dialect {
+  let name = "petite";
+  let cppNamespace = "::mlir::petite";
 }
 
-// Base class for toy dialect operations. This operation inherits from the base
-// `Op` class in OpBase.td, and provides:
-//   * The parent dialect of the operation.
-//   * The mnemonic for the operation, or the name without the dialect prefix.
-//   * A list of traits for the operation.
-class Toy_Op<string mnemonic, list<Trait> traits = []> :
-    Op<Toy_Dialect, mnemonic, traits>;
+
+// 继承 OpBase.td 中的 Op 类，定义了 Petite dialect 的操作的基类
+class Petite_Op<string mnemonic, list<Trait> traits = []> :
+    Op<Petite_Dialect, mnemonic, traits>;
 
 //===----------------------------------------------------------------------===//
-// Toy Operations
+// Petite Operations
 //===----------------------------------------------------------------------===//
 
 //===----------------------------------------------------------------------===//
 // ConstantOp
 //===----------------------------------------------------------------------===//
 
-// We define a toy operation by inheriting from our base 'Toy_Op' class above.
-// Here we provide the mnemonic and a list of traits for the operation. The
-// constant operation is marked as 'Pure' as it is a pure operation
-// and may be removed if dead.
-def ConstantOp : Toy_Op<"constant", [Pure]> {
-  // Provide a summary and description for this operation. This can be used to
-  // auto-generate documentation of the operations within our dialect.
-  let summary = "constant";
+// 定义 Petite dialect 中的 constant 操作
+// 该操作将一个字面量转换为 SSA 值，数据作为属性附加到操作上
+
+def Petite_DatabaseTableOp : Petite_Op<"database_table", [Pure]> {
+  let summary = "Database table operation";
   let description = [{
-    Constant operation turns a literal into an SSA value. The data is attached
-    to the operation as an attribute. For example:
+    Database table operation stores a 2D floating-point tensor in the database. The data is
+    attached to the operation as an attribute. For example:
 
     ```mlir
-      %0 = toy.constant dense<[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]>
-                        : tensor<2x3xf64>
+      %0 = petite.database_table dense<[[1.0, 2.0], [3.0, 4.0]]> : tensor<*xf64>
     ```
   }];
 
-  // The constant operation takes an attribute as the only input.
-  let arguments = (ins F64ElementsAttr:$value);
+  // The database table operation takes a tensor attribute as the input.
+  // let arguments = (ins DenseElementsAttr:$value);
 
-  // The constant operation returns a single value of TensorType.
-  let results = (outs F64Tensor);
+  // The database table operation returns a single value of tensor type.
+  let results = (outs F64Tensor:$result);
 
   // Indicate that the operation has a custom parser and printer method.
   let hasCustomAssemblyFormat = 1;
 
-  // Add custom build methods for the constant operation. These method populates
-  // the `state` that MLIR uses to create operations, i.e. these are used when
-  // using `builder.create<ConstantOp>(...)`.
+  // Add custom build methods for the database table operation.
   let builders = [
-    // Build a constant with a given constant tensor value.
+    // Build a database table operation with a given constant tensor value.
     OpBuilder<(ins "DenseElementsAttr":$value), [{
       build($_builder, $_state, value.getType(), value);
-    }]>,
-
-    // Build a constant with a given constant floating-point value.
-    OpBuilder<(ins "double":$value)>
+    }]>
   ];
 
   // Indicate that additional verification for this operation is necessary.
   let hasVerifier = 1;
 }
 
+
+
+
 //===----------------------------------------------------------------------===//
-// AddOp
+// ScanOp
 //===----------------------------------------------------------------------===//
 
-def AddOp : Toy_Op<"add"> {
-  let summary = "element-wise addition operation";
+def ScanOp : Petite_Op<"scan", [Pure]> {
+  let summary = "Scan a table from the database";
   let description = [{
-    The "add" operation performs element-wise addition between two tensors.
-    The shapes of the tensor operands are expected to match.
+    The "scan" operation retrieves a table from the database by its name.
   }];
 
-  let arguments = (ins F64Tensor:$lhs, F64Tensor:$rhs);
-  let results = (outs F64Tensor);
+  let arguments = (ins StrAttr:$table_name);
+  let results = (outs TableType:$result);
 
-  // Indicate that the operation has a custom parser and printer method.
   let hasCustomAssemblyFormat = 1;
 
-  // Allow building an AddOp with from the two input operands.
   let builders = [
-    OpBuilder<(ins "Value":$lhs, "Value":$rhs)>
+    OpBuilder<(ins "StringRef":$table_name), [{
+      build($_builder, $_state, TableType::get($_builder.getContext()), $_builder.getStringAttr(table_name));
+    }]>
   ];
 }
 
+
 //===----------------------------------------------------------------------===//
-// FuncOp
+// ProjectOp
 //===----------------------------------------------------------------------===//
 
-def FuncOp : Toy_Op<"func", [
-    FunctionOpInterface, IsolatedFromAbove
-  ]> {
-  let summary = "user defined function operation";
+// def ProjectOp : Petite_Op<"project", [Pure]> {
+//   let summary = "Project specific columns from a table";
+//   let description = [{
+//     The "project" operation selects specific columns from a table.
+//   }];
+
+//   let arguments = (ins TableType:$table, ArrayAttr:$columns);
+//   let results = (outs TableType:$result);
+
+//   let hasCustomAssemblyFormat = 1;
+
+//   let builders = [
+//     OpBuilder<(ins "Value":$table, "ArrayRef<Attribute>":$columns), [{
+//       build($_builder, $_state, table.getType(), table, $_builder.getArrayAttr(columns));
+//     }]>
+//   ];
+// }
+
+
+//===----------------------------------------------------------------------===//
+// JoinOp
+//===----------------------------------------------------------------------===//
+
+// def JoinOp : Petite_Op<"join", [Pure]> {
+//   let summary = "Join two tables on specific columns";
+//   let description = [{
+//     The "join" operation combines two tables based on specific columns.
+//   }];
+
+//   let arguments = (ins TableType:$lhs, TableType:$rhs, ArrayAttr:$columns);
+//   let results = (outs TableType:$result);
+
+//   let hasCustomAssemblyFormat = 1;
+
+//   let builders = [
+//     OpBuilder<(ins "Value":$lhs, "Value":$rhs, "ArrayRef<Attribute>":$columns), [{
+//       build($_builder, $_state, lhs.getType(), lhs, rhs, $_builder.getArrayAttr(columns));
+//     }]>
+//   ];
+// }
+
+
+//===----------------------------------------------------------------------===//
+// SelectOp
+//===----------------------------------------------------------------------===//
+
+def SelectOp : Petite_Op<"select", [Pure]> {
+  let summary = "Select rows from a table based on conditions";
   let description = [{
-    The "toy.func" operation represents a user defined function. These are
-    callable SSA-region operations that contain toy computations.
-
-    Example:
-
-    ```mlir
-    toy.func @main() {
-      %0 = toy.constant dense<5.500000e+00> : tensor<f64>
-      %1 = toy.reshape(%0 : tensor<f64>) to tensor<2x2xf64>
-      toy.print %1 : tensor<2x2xf64>
-      toy.return
-    }
-    ```
+    The "select" operation retrieves rows from a table that match specific conditions.
   }];
 
-  let arguments = (ins
-    SymbolNameAttr:$sym_name,
-    TypeAttrOf<FunctionType>:$function_type,
-    OptionalAttr<DictArrayAttr>:$arg_attrs,
-    OptionalAttr<DictArrayAttr>:$res_attrs
-  );
-  let regions = (region AnyRegion:$body);
-
-  let builders = [OpBuilder<(ins
-    "StringRef":$name, "FunctionType":$type,
-    CArg<"ArrayRef<NamedAttribute>", "{}">:$attrs)
-  >];
-
-  let extraClassDeclaration = [{
-    //===------------------------------------------------------------------===//
-    // FunctionOpInterface Methods
-    //===------------------------------------------------------------------===//
-
-    /// Returns the argument types of this function.
-    ArrayRef<Type> getArgumentTypes() { return getFunctionType().getInputs(); }
-
-    /// Returns the result types of this function.
-    ArrayRef<Type> getResultTypes() { return getFunctionType().getResults(); }
-
-    Region *getCallableRegion() { return &getBody(); }
-  }];
+  let arguments = (ins TableType:$table, ArrayAttr:$conditions);
+  let results = (outs TableType:$result);
 
   let hasCustomAssemblyFormat = 1;
-  let skipDefaultBuilders = 1;
-}
 
-//===----------------------------------------------------------------------===//
-// GenericCallOp
-//===----------------------------------------------------------------------===//
-
-def GenericCallOp : Toy_Op<"generic_call"> {
-  let summary = "generic call operation";
-  let description = [{
-    Generic calls represent calls to a user defined function that needs to
-    be specialized for the shape of its arguments. The callee name is attached
-    as a symbol reference via an attribute. The arguments list must match the
-    arguments expected by the callee. For example:
-
-    ```mlir
-     %4 = toy.generic_call @my_func(%1, %3)
-           : (tensor<2x3xf64>, tensor<2x3xf64>) -> tensor<*xf64>
-    ```
-
-    This is only valid if a function named "my_func" exists and takes two
-    arguments.
-  }];
-
-  // The generic call operation takes a symbol reference attribute as the
-  // callee, and inputs for the call.
-  let arguments = (ins FlatSymbolRefAttr:$callee, Variadic<F64Tensor>:$inputs);
-
-  // The generic call operation returns a single value of TensorType.
-  let results = (outs F64Tensor);
-
-  // Specialize assembly printing and parsing using a declarative format.
-  let assemblyFormat = [{
-    $callee `(` $inputs `)` attr-dict `:` functional-type($inputs, results)
-  }];
-
-  // Add custom build methods for the generic call operation.
   let builders = [
-    OpBuilder<(ins "StringRef":$callee, "ArrayRef<Value>":$arguments)>
+    OpBuilder<(ins "Value":$table, "ArrayRef<Attribute>":$conditions), [{
+      build($_builder, $_state, table.getType(), table, $_builder.getArrayAttr(conditions));
+    }]>
   ];
 }
 
-//===----------------------------------------------------------------------===//
-// MulOp
-//===----------------------------------------------------------------------===//
 
-def MulOp : Toy_Op<"mul"> {
-  let summary = "element-wise multiplication operation";
-  let description = [{
-    The "mul" operation performs element-wise multiplication between two
-    tensors. The shapes of the tensor operands are expected to match.
-  }];
 
-  let arguments = (ins F64Tensor:$lhs, F64Tensor:$rhs);
-  let results = (outs F64Tensor);
 
-  // Indicate that the operation has a custom parser and printer method.
-  let hasCustomAssemblyFormat = 1;
+#endif // PETITE_OPS
 
-  // Allow building a MulOp with from the two input operands.
-  let builders = [
-    OpBuilder<(ins "Value":$lhs, "Value":$rhs)>
-  ];
-}
-
-//===----------------------------------------------------------------------===//
-// PrintOp
-//===----------------------------------------------------------------------===//
-
-def PrintOp : Toy_Op<"print"> {
-  let summary = "print operation";
-  let description = [{
-    The "print" builtin operation prints a given input tensor, and produces
-    no results.
-  }];
-
-  // The print operation takes an input tensor to print.
-  let arguments = (ins F64Tensor:$input);
-
-  let assemblyFormat = "$input attr-dict `:` type($input)";
-}
-
-//===----------------------------------------------------------------------===//
-// ReshapeOp
-//===----------------------------------------------------------------------===//
-
-def ReshapeOp : Toy_Op<"reshape"> {
-  let summary = "tensor reshape operation";
-  let description = [{
-    Reshape operation is transforming its input tensor into a new tensor with
-    the same number of elements but different shapes. For example:
-
-    ```mlir
-       %0 = toy.reshape (%arg1 : tensor<10xf64>) to tensor<5x2xf64>
-    ```
-  }];
-
-  let arguments = (ins F64Tensor:$input);
-
-  // We expect that the reshape operation returns a statically shaped tensor.
-  let results = (outs StaticShapeTensorOf<[F64]>);
-
-  let assemblyFormat = [{
-    `(` $input `:` type($input) `)` attr-dict `to` type(results)
-  }];
-}
-
-//===----------------------------------------------------------------------===//
-// ReturnOp
-//===----------------------------------------------------------------------===//
-
-def ReturnOp : Toy_Op<"return", [Pure, HasParent<"FuncOp">,
-                                 Terminator]> {
-  let summary = "return operation";
-  let description = [{
-    The "return" operation represents a return operation within a function.
-    The operation takes an optional tensor operand and produces no results.
-    The operand type must match the signature of the function that contains
-    the operation. For example:
-
-    ```mlir
-      toy.func @foo() -> tensor<2xf64> {
-        ...
-        toy.return %0 : tensor<2xf64>
-      }
-    ```
-  }];
-
-  // The return operation takes an optional input operand to return. This
-  // value must match the return type of the enclosing function.
-  let arguments = (ins Variadic<F64Tensor>:$input);
-
-  // The return operation only emits the input in the format if it is present.
-  let assemblyFormat = "($input^ `:` type($input))? attr-dict ";
-
-  // Allow building a ReturnOp with no return operand.
-  let builders = [
-    OpBuilder<(ins), [{ build($_builder, $_state, std::nullopt); }]>
-  ];
-
-  // Provide extra utility definitions on the c++ operation class definition.
-  let extraClassDeclaration = [{
-    bool hasOperand() { return getNumOperands() != 0; }
-  }];
-
-  // Invoke a static verify method to verify this return operation.
-  let hasVerifier = 1;
-}
-
-//===----------------------------------------------------------------------===//
-// TransposeOp
-//===----------------------------------------------------------------------===//
-
-def TransposeOp : Toy_Op<"transpose"> {
-  let summary = "transpose operation";
-
-  let arguments = (ins F64Tensor:$input);
-  let results = (outs F64Tensor);
-
-  let assemblyFormat = [{
-    `(` $input `:` type($input) `)` attr-dict `to` type(results)
-  }];
-
-  // Allow building a TransposeOp with from the input operand.
-  let builders = [
-    OpBuilder<(ins "Value":$input)>
-  ];
-
-  // Invoke a static verify method to verify this transpose operation.
-  let hasVerifier = 1;
-}
-
-#endif // TOY_OPS

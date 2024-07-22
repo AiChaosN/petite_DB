@@ -1,0 +1,42 @@
+目前草稿:
+// ---- petiteDB dialect example ----
+
+// 定义方言
+module attributes {dialect = "petite"} {
+  // scan 操作
+  %table = petite.scan "table_name" : !petite.table
+
+  // project 操作,选择特定列
+  %columns = petite.project %table ["column1", "column2"] : (!petite.table) -> !petite.table
+
+  // join 操作,将两个表连接起来
+  %joined_table = petite.join %table, %another_table ["column1", "column2"] : (!petite.table, !petite.table) -> !petite.table
+
+  // select 操作,选择符合条件的行
+  %selected_rows = petite.select %table ["column1 = 'value'"] : (!petite.table) -> !petite.table
+}
+
+// ---- petiteDB dialect example ----
+
+scan:扫描表table_name,并将结果存储在%table中。
+string -> table。
+
+
+
+project:从表中选择特定的列,这里选择了column1和column2。
+table -> table[2:5]
+
+
+
+select:选择符合条件的行,这里选择column1等于value的行。
+table, (string, cond) -> table
+
+
+
+join:连接两个表%table和%another_table,基于column1和column2进行连接。
+tableA, tableB。 -> table[A+B]
+
+
+
+print:打印表中的内容。
+table -> io
