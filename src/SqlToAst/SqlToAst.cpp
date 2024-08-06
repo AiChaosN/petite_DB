@@ -42,11 +42,13 @@ void SqlToAst::printAst(const std::string& outputFilePath) {
 
         for (auto i = 0u; i < result_.size(); ++i) {
             const hsql::SQLStatement* stmt = result_.getStatement(i);
+            outFile << "SQL = " << i << "----正在解析----" << std::endl;
             if (stmt->type() == hsql::kStmtSelect) {
                 const hsql::SelectStatement* selectStmt = static_cast<const hsql::SelectStatement*>(stmt);
                 outFile << "SELECT statement found" << std::endl;
                 printSelectStatement(outFile, selectStmt, 1);
             }
+            outFile << "SQL = " << i << "----解析完毕----" << std::endl;
         }
     } else {
         outFile << "No valid AST to print." << std::endl;

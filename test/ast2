@@ -1,4 +1,5 @@
 Parsed successfully!
+SQL0----正在解析----
 SELECT statement found
   SELECT list:
     Column: t1.age
@@ -21,3 +22,4 @@ WHERE clause:
         Literal int: 18
 
 
+SQL0----解析完毕----

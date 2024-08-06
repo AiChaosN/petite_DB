@@ -9,18 +9,26 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    std::cout << "SQL 转换 AST 阶段 开始" << std::endl;
     //解析SQL文件 --> AST
     std::string sqlFilePath = argv[1];
     std::string outputFilePath = argv[2];
     SqlToAst sqlToAst(sqlFilePath);
 
+    std::cout << "SQL 转换 AST 阶段 结束" << std::endl;
     
+
+    std::cout << "展示AST"<< std::endl;
     if (sqlToAst.parseSql()) {
         sqlToAst.printAst(outputFilePath);
     } else {
         std::cerr << "Failed to parse SQL file." << std::endl;
         return 1;
     }
+
+    
+
+
 
     //AST 转 MLIR
 

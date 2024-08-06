@@ -1,7 +1,21 @@
 # petite_DB
 
 Total
-a smaaaaaaaaaaaal database
+'''
+.
+├── CMakeLists.txt  
+├── Dialect_gen.h
+├── Ops_gen.cpp
+├── README.md
+├── build
+├── doc
+├── include
+├── script
+├── src               
+├── test
+├── third_party
+└── tmp
+'''
 
 
 # we will do

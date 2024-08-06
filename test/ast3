@@ -1,4 +1,5 @@
 Parsed successfully!
+SQL0----正在解析----
 SELECT statement found
   SELECT list:
     *
@@ -9,3 +10,4 @@ WHERE clause:
       Column: t1.id
       Column: t2.id
 
+SQL0----解析完毕----

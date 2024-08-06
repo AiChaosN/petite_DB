@@ -1,1 +1,3 @@
 SELECT * FROM t1 WHERE id = 1;
+SELECT * FROM t2 WHERE id = 5;
+SELECT * FROM t3 WHERE id = 9;

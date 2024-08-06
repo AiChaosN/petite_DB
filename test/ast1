@@ -1,4 +1,5 @@
 Parsed successfully!
+SQL0----正在解析----
 SELECT statement found
   SELECT list:
     *
@@ -9,3 +10,28 @@ WHERE clause:
       Column: id
       Literal int: 1
 
+SQL0----解析完毕----
+SQL1----正在解析----
+SELECT statement found
+  SELECT list:
+    *
+From table:
+    Table name: t2
+WHERE clause:
+    Operator: 10
+      Column: id
+      Literal int: 5
+
+SQL1----解析完毕----
+SQL2----正在解析----
+SELECT statement found
+  SELECT list:
+    *
+From table:
+    Table name: t3
+WHERE clause:
+    Operator: 10
+      Column: id
+      Literal int: 9
+
+SQL2----解析完毕----
