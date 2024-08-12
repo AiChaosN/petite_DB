@@ -19,20 +19,19 @@ MLIR_INCLUDE_DIR=$ROOT_DIR/mlir/include
 INCLUDE_DIR=${SCRIPT_DIR}/../include
 
 
+# 运行 RUNNING
 
-echo "使用mlir-tblgen 生成dialect"
-${build_root}/bin/mlir-tblgen -gen-dialect-decls ${SCRIPT_DIR}/../include/PetiteMlir/Ops.td -I ${mlir_src_root}/include/ -I ${INCLUDE_DIR} > Dialect_gen.h
-
-echo "使用mlir-tblgen 生成op"
-${build_root}/bin/mlir-tblgen -gen-op-defs ${SCRIPT_DIR}/../include/PetiteMlir/Ops.td -I ${mlir_src_root}/include/ -I ${INCLUDE_DIR} > Ops_gen.cpp
-
+echo "使用mlir-tblgen"
+${build_root}/bin/mlir-tblgen ${SCRIPT_DIR}/../include/PetiteMlir/Ops.td -I ${mlir_src_root}/include/ -I ${INCLUDE_DIR} > ${OUTPUT_DIR}/Ops_gen.cpp
+# /home/aichaos/mylab/demodb/llvm-project/build/bin/mlir-tblgen 
 
 
 # echo "使用mlir-tblgen 生成dialect"
-# ${build_root}/bin/mlir-tblgen --gen-op-decls --gen-op-defs --I=$MLIR_INCLUDE_DIR --I=$INCLUDE_DIR ${SCRIPT_DIR}/../src/PetiteMlir/PetiteDialect.td -o ${OUTPUT_DIR}/PetiteDialect.h
+# ${build_root}/bin/mlir-tblgen -gen-dialect-decls ${SCRIPT_DIR}/../include/PetiteMlir/Ops.td -I ${mlir_src_root}/include/ -I ${INCLUDE_DIR} > Dialect_gen.h
 
 # echo "使用mlir-tblgen 生成op"
-# ${build_root}/bin/mlir-tblgen --gen-op-defs --I=$MLIR_INCLUDE_DIR --I=$INCLUDE_DIR ${SCRIPT_DIR}/../src/PetiteMlir/PetiteDialect.td -o ${OUTPUT_DIR}/PetiteDialect.cpp
+# ${build_root}/bin/mlir-tblgen -gen-op-defs ${SCRIPT_DIR}/../include/PetiteMlir/Ops.td -I ${mlir_src_root}/include/ -I ${INCLUDE_DIR} > Ops_gen.cpp
+
 
 echo "生成完成，输出目录：${OUTPUT_DIR}"
 

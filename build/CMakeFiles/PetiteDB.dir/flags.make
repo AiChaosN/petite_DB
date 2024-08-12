@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/aichaos/mylab/demodb/petite_DB/include -I/home/aichaos/mylab/demodb/petite_DB/third_party/sql-parser/src
+CXX_INCLUDES = -I/home/aichaos/mylab/demodb/llvm-project/llvm/include -I/home/aichaos/mylab/demodb/llvm-project/build/include -I/home/aichaos/mylab/demodb/petite_DB/include -I/home/aichaos/mylab/demodb/petite_DB/third_party/sql-parser/src
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -std=gnu++11   -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 
