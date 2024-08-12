@@ -1,5 +1,5 @@
-#ifndef SQL_TO_AST_H
-#define SQL_TO_AST_H
+#ifndef PETITE_AST_H
+#define PETITE_AST_H
 
 #include <string>
 #include "SQLParser.h"
@@ -16,4 +16,4 @@ private:
     hsql::SQLParserResult result_;
 };
 
-#endif // SQL_TO_AST_H
+#endif // PETITE_AST_H

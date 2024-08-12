@@ -18,6 +18,9 @@ add_definitions(${LLVM_DEFINITIONS})
 # include目录
 include_directories(include)
 
+#子目录
+add_subdirectory(src)
+
 
 
 ## 第三方库部分
