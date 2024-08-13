@@ -25,7 +25,7 @@ add_subdirectory(src)
 
 ## 第三方库部分
 # 添加sql-parser库
-add_subdirectory(third_party/sql-parser)
+add_subdirectory(third_party)
 
 # 添加 hsql 的头文件路径
 include_directories(${CMAKE_SOURCE_DIR}/third_party/sql-parser/src)
