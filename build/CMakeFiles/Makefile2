@@ -63,247 +63,134 @@ CMAKE_BINARY_DIR = /home/aichaos/mylab/demodb/petite_DB/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/PetiteDB.dir/all
-all: third_party/sql-parser/all
+all: third_party/all
+all: src/all
+all: tools/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: third_party/sql-parser/preinstall
+preinstall: third_party/preinstall
+preinstall: src/preinstall
+preinstall: tools/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/intrinsics_gen.dir/clean
-clean: CMakeFiles/omp_gen.dir/clean
-clean: CMakeFiles/acc_gen.dir/clean
-clean: CMakeFiles/ARMTargetParserTableGen.dir/clean
-clean: CMakeFiles/AArch64TargetParserTableGen.dir/clean
-clean: CMakeFiles/RISCVTargetParserTableGen.dir/clean
-clean: CMakeFiles/PetiteDB.dir/clean
-clean: third_party/sql-parser/clean
+clean: third_party/clean
+clean: src/clean
+clean: tools/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory third_party/sql-parser
+# Directory level rules for directory src
 
 # Recursive "all" directory target.
-third_party/sql-parser/all: third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/all
-.PHONY : third_party/sql-parser/all
+src/all: src/SqlToAst/all
+.PHONY : src/all
 
 # Recursive "preinstall" directory target.
-third_party/sql-parser/preinstall:
-.PHONY : third_party/sql-parser/preinstall
+src/preinstall: src/SqlToAst/preinstall
+.PHONY : src/preinstall
 
 # Recursive "clean" directory target.
-third_party/sql-parser/clean: third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/clean
-.PHONY : third_party/sql-parser/clean
+src/clean: src/SqlToAst/clean
+.PHONY : src/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/intrinsics_gen.dir
+# Directory level rules for directory src/SqlToAst
+
+# Recursive "all" directory target.
+src/SqlToAst/all: src/SqlToAst/CMakeFiles/SQL_AST.dir/all
+.PHONY : src/SqlToAst/all
+
+# Recursive "preinstall" directory target.
+src/SqlToAst/preinstall:
+.PHONY : src/SqlToAst/preinstall
+
+# Recursive "clean" directory target.
+src/SqlToAst/clean: src/SqlToAst/CMakeFiles/SQL_AST.dir/clean
+.PHONY : src/SqlToAst/clean
+
+#=============================================================================
+# Directory level rules for directory third_party
+
+# Recursive "all" directory target.
+third_party/all:
+.PHONY : third_party/all
+
+# Recursive "preinstall" directory target.
+third_party/preinstall:
+.PHONY : third_party/preinstall
+
+# Recursive "clean" directory target.
+third_party/clean:
+.PHONY : third_party/clean
+
+#=============================================================================
+# Directory level rules for directory tools
+
+# Recursive "all" directory target.
+tools/all: tools/CMakeFiles/sql_to_ast.dir/all
+.PHONY : tools/all
+
+# Recursive "preinstall" directory target.
+tools/preinstall:
+.PHONY : tools/preinstall
+
+# Recursive "clean" directory target.
+tools/clean: tools/CMakeFiles/sql_to_ast.dir/clean
+.PHONY : tools/clean
+
+#=============================================================================
+# Target rules for target src/SqlToAst/CMakeFiles/SQL_AST.dir
 
 # All Build rule for target.
-CMakeFiles/intrinsics_gen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target intrinsics_gen"
-.PHONY : CMakeFiles/intrinsics_gen.dir/all
+src/SqlToAst/CMakeFiles/SQL_AST.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/SqlToAst/CMakeFiles/SQL_AST.dir/build.make src/SqlToAst/CMakeFiles/SQL_AST.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/SqlToAst/CMakeFiles/SQL_AST.dir/build.make src/SqlToAst/CMakeFiles/SQL_AST.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target SQL_AST"
+.PHONY : src/SqlToAst/CMakeFiles/SQL_AST.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/intrinsics_gen.dir/rule: cmake_check_build_system
+src/SqlToAst/CMakeFiles/SQL_AST.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SqlToAst/CMakeFiles/SQL_AST.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/intrinsics_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/intrinsics_gen.dir/rule
+.PHONY : src/SqlToAst/CMakeFiles/SQL_AST.dir/rule
 
 # Convenience name for target.
-intrinsics_gen: CMakeFiles/intrinsics_gen.dir/rule
-.PHONY : intrinsics_gen
+SQL_AST: src/SqlToAst/CMakeFiles/SQL_AST.dir/rule
+.PHONY : SQL_AST
 
 # clean rule for target.
-CMakeFiles/intrinsics_gen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/clean
-.PHONY : CMakeFiles/intrinsics_gen.dir/clean
+src/SqlToAst/CMakeFiles/SQL_AST.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/SqlToAst/CMakeFiles/SQL_AST.dir/build.make src/SqlToAst/CMakeFiles/SQL_AST.dir/clean
+.PHONY : src/SqlToAst/CMakeFiles/SQL_AST.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/omp_gen.dir
+# Target rules for target tools/CMakeFiles/sql_to_ast.dir
 
 # All Build rule for target.
-CMakeFiles/omp_gen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target omp_gen"
-.PHONY : CMakeFiles/omp_gen.dir/all
+tools/CMakeFiles/sql_to_ast.dir/all: src/SqlToAst/CMakeFiles/SQL_AST.dir/all
+	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/sql_to_ast.dir/build.make tools/CMakeFiles/sql_to_ast.dir/depend
+	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/sql_to_ast.dir/build.make tools/CMakeFiles/sql_to_ast.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num=8,9 "Built target sql_to_ast"
+.PHONY : tools/CMakeFiles/sql_to_ast.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/omp_gen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/omp_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/omp_gen.dir/rule
-
-# Convenience name for target.
-omp_gen: CMakeFiles/omp_gen.dir/rule
-.PHONY : omp_gen
-
-# clean rule for target.
-CMakeFiles/omp_gen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/clean
-.PHONY : CMakeFiles/omp_gen.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/acc_gen.dir
-
-# All Build rule for target.
-CMakeFiles/acc_gen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target acc_gen"
-.PHONY : CMakeFiles/acc_gen.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/acc_gen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/acc_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/acc_gen.dir/rule
-
-# Convenience name for target.
-acc_gen: CMakeFiles/acc_gen.dir/rule
-.PHONY : acc_gen
-
-# clean rule for target.
-CMakeFiles/acc_gen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/clean
-.PHONY : CMakeFiles/acc_gen.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/ARMTargetParserTableGen.dir
-
-# All Build rule for target.
-CMakeFiles/ARMTargetParserTableGen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ARMTargetParserTableGen.dir/build.make CMakeFiles/ARMTargetParserTableGen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ARMTargetParserTableGen.dir/build.make CMakeFiles/ARMTargetParserTableGen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target ARMTargetParserTableGen"
-.PHONY : CMakeFiles/ARMTargetParserTableGen.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/ARMTargetParserTableGen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ARMTargetParserTableGen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/ARMTargetParserTableGen.dir/rule
-
-# Convenience name for target.
-ARMTargetParserTableGen: CMakeFiles/ARMTargetParserTableGen.dir/rule
-.PHONY : ARMTargetParserTableGen
-
-# clean rule for target.
-CMakeFiles/ARMTargetParserTableGen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ARMTargetParserTableGen.dir/build.make CMakeFiles/ARMTargetParserTableGen.dir/clean
-.PHONY : CMakeFiles/ARMTargetParserTableGen.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/AArch64TargetParserTableGen.dir
-
-# All Build rule for target.
-CMakeFiles/AArch64TargetParserTableGen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AArch64TargetParserTableGen.dir/build.make CMakeFiles/AArch64TargetParserTableGen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AArch64TargetParserTableGen.dir/build.make CMakeFiles/AArch64TargetParserTableGen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target AArch64TargetParserTableGen"
-.PHONY : CMakeFiles/AArch64TargetParserTableGen.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/AArch64TargetParserTableGen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/AArch64TargetParserTableGen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/AArch64TargetParserTableGen.dir/rule
-
-# Convenience name for target.
-AArch64TargetParserTableGen: CMakeFiles/AArch64TargetParserTableGen.dir/rule
-.PHONY : AArch64TargetParserTableGen
-
-# clean rule for target.
-CMakeFiles/AArch64TargetParserTableGen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AArch64TargetParserTableGen.dir/build.make CMakeFiles/AArch64TargetParserTableGen.dir/clean
-.PHONY : CMakeFiles/AArch64TargetParserTableGen.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/RISCVTargetParserTableGen.dir
-
-# All Build rule for target.
-CMakeFiles/RISCVTargetParserTableGen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num= "Built target RISCVTargetParserTableGen"
-.PHONY : CMakeFiles/RISCVTargetParserTableGen.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/RISCVTargetParserTableGen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RISCVTargetParserTableGen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/RISCVTargetParserTableGen.dir/rule
-
-# Convenience name for target.
-RISCVTargetParserTableGen: CMakeFiles/RISCVTargetParserTableGen.dir/rule
-.PHONY : RISCVTargetParserTableGen
-
-# clean rule for target.
-CMakeFiles/RISCVTargetParserTableGen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/clean
-.PHONY : CMakeFiles/RISCVTargetParserTableGen.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/PetiteDB.dir
-
-# All Build rule for target.
-CMakeFiles/PetiteDB.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num=1,2,3 "Built target PetiteDB"
-.PHONY : CMakeFiles/PetiteDB.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/PetiteDB.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PetiteDB.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : CMakeFiles/PetiteDB.dir/rule
-
-# Convenience name for target.
-PetiteDB: CMakeFiles/PetiteDB.dir/rule
-.PHONY : PetiteDB
-
-# clean rule for target.
-CMakeFiles/PetiteDB.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/clean
-.PHONY : CMakeFiles/PetiteDB.dir/clean
-
-#=============================================================================
-# Target rules for target third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir
-
-# All Build rule for target.
-third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/all:
-	$(MAKE) $(MAKESILENT) -f third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build.make third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/depend
-	$(MAKE) $(MAKESILENT) -f third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build.make third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12 "Built target hyrise-sql-parser"
-.PHONY : third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/all
-
-# Build rule for subdir invocation for target.
-third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/rule: cmake_check_build_system
+tools/CMakeFiles/sql_to_ast.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/CMakeFiles/sql_to_ast.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aichaos/mylab/demodb/petite_DB/build/CMakeFiles 0
-.PHONY : third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/rule
+.PHONY : tools/CMakeFiles/sql_to_ast.dir/rule
 
 # Convenience name for target.
-hyrise-sql-parser: third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/rule
-.PHONY : hyrise-sql-parser
+sql_to_ast: tools/CMakeFiles/sql_to_ast.dir/rule
+.PHONY : sql_to_ast
 
 # clean rule for target.
-third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/clean:
-	$(MAKE) $(MAKESILENT) -f third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build.make third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/clean
-.PHONY : third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/clean
+tools/CMakeFiles/sql_to_ast.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/sql_to_ast.dir/build.make tools/CMakeFiles/sql_to_ast.dir/clean
+.PHONY : tools/CMakeFiles/sql_to_ast.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

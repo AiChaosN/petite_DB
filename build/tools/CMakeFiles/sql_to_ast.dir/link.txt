@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/sql_to_ast.dir/sql_to_ast.cpp.o -o sql_to_ast  -Wl,-rpath,/home/aichaos/mylab/demodb/petite_DB/build/src/SqlToAst ../src/SqlToAst/libSQL_AST.so -lsqlparser

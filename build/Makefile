@@ -117,156 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named intrinsics_gen
+# Target rules for targets named SQL_AST
 
 # Build rule for target.
-intrinsics_gen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 intrinsics_gen
-.PHONY : intrinsics_gen
+SQL_AST: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SQL_AST
+.PHONY : SQL_AST
 
 # fast build rule for target.
-intrinsics_gen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/build
-.PHONY : intrinsics_gen/fast
+SQL_AST/fast:
+	$(MAKE) $(MAKESILENT) -f src/SqlToAst/CMakeFiles/SQL_AST.dir/build.make src/SqlToAst/CMakeFiles/SQL_AST.dir/build
+.PHONY : SQL_AST/fast
 
 #=============================================================================
-# Target rules for targets named omp_gen
+# Target rules for targets named sql_to_ast
 
 # Build rule for target.
-omp_gen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 omp_gen
-.PHONY : omp_gen
+sql_to_ast: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sql_to_ast
+.PHONY : sql_to_ast
 
 # fast build rule for target.
-omp_gen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/build
-.PHONY : omp_gen/fast
-
-#=============================================================================
-# Target rules for targets named acc_gen
-
-# Build rule for target.
-acc_gen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 acc_gen
-.PHONY : acc_gen
-
-# fast build rule for target.
-acc_gen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/build
-.PHONY : acc_gen/fast
-
-#=============================================================================
-# Target rules for targets named ARMTargetParserTableGen
-
-# Build rule for target.
-ARMTargetParserTableGen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ARMTargetParserTableGen
-.PHONY : ARMTargetParserTableGen
-
-# fast build rule for target.
-ARMTargetParserTableGen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ARMTargetParserTableGen.dir/build.make CMakeFiles/ARMTargetParserTableGen.dir/build
-.PHONY : ARMTargetParserTableGen/fast
-
-#=============================================================================
-# Target rules for targets named AArch64TargetParserTableGen
-
-# Build rule for target.
-AArch64TargetParserTableGen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AArch64TargetParserTableGen
-.PHONY : AArch64TargetParserTableGen
-
-# fast build rule for target.
-AArch64TargetParserTableGen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AArch64TargetParserTableGen.dir/build.make CMakeFiles/AArch64TargetParserTableGen.dir/build
-.PHONY : AArch64TargetParserTableGen/fast
-
-#=============================================================================
-# Target rules for targets named RISCVTargetParserTableGen
-
-# Build rule for target.
-RISCVTargetParserTableGen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RISCVTargetParserTableGen
-.PHONY : RISCVTargetParserTableGen
-
-# fast build rule for target.
-RISCVTargetParserTableGen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/build
-.PHONY : RISCVTargetParserTableGen/fast
-
-#=============================================================================
-# Target rules for targets named PetiteDB
-
-# Build rule for target.
-PetiteDB: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PetiteDB
-.PHONY : PetiteDB
-
-# fast build rule for target.
-PetiteDB/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/build
-.PHONY : PetiteDB/fast
-
-#=============================================================================
-# Target rules for targets named hyrise-sql-parser
-
-# Build rule for target.
-hyrise-sql-parser: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hyrise-sql-parser
-.PHONY : hyrise-sql-parser
-
-# fast build rule for target.
-hyrise-sql-parser/fast:
-	$(MAKE) $(MAKESILENT) -f third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build.make third_party/sql-parser/CMakeFiles/hyrise-sql-parser.dir/build
-.PHONY : hyrise-sql-parser/fast
-
-src/SqlToAst/SqlToAst.o: src/SqlToAst/SqlToAst.cpp.o
-.PHONY : src/SqlToAst/SqlToAst.o
-
-# target to build an object file
-src/SqlToAst/SqlToAst.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.o
-.PHONY : src/SqlToAst/SqlToAst.cpp.o
-
-src/SqlToAst/SqlToAst.i: src/SqlToAst/SqlToAst.cpp.i
-.PHONY : src/SqlToAst/SqlToAst.i
-
-# target to preprocess a source file
-src/SqlToAst/SqlToAst.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.i
-.PHONY : src/SqlToAst/SqlToAst.cpp.i
-
-src/SqlToAst/SqlToAst.s: src/SqlToAst/SqlToAst.cpp.s
-.PHONY : src/SqlToAst/SqlToAst.s
-
-# target to generate assembly for a file
-src/SqlToAst/SqlToAst.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.s
-.PHONY : src/SqlToAst/SqlToAst.cpp.s
-
-src/petite.o: src/petite.cpp.o
-.PHONY : src/petite.o
-
-# target to build an object file
-src/petite.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/petite.cpp.o
-.PHONY : src/petite.cpp.o
-
-src/petite.i: src/petite.cpp.i
-.PHONY : src/petite.i
-
-# target to preprocess a source file
-src/petite.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/petite.cpp.i
-.PHONY : src/petite.cpp.i
-
-src/petite.s: src/petite.cpp.s
-.PHONY : src/petite.s
-
-# target to generate assembly for a file
-src/petite.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PetiteDB.dir/build.make CMakeFiles/PetiteDB.dir/src/petite.cpp.s
-.PHONY : src/petite.cpp.s
+sql_to_ast/fast:
+	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/sql_to_ast.dir/build.make tools/CMakeFiles/sql_to_ast.dir/build
+.PHONY : sql_to_ast/fast
 
 # Help Target
 help:
@@ -276,20 +150,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... AArch64TargetParserTableGen"
-	@echo "... ARMTargetParserTableGen"
-	@echo "... RISCVTargetParserTableGen"
-	@echo "... acc_gen"
-	@echo "... intrinsics_gen"
-	@echo "... omp_gen"
-	@echo "... PetiteDB"
-	@echo "... hyrise-sql-parser"
-	@echo "... src/SqlToAst/SqlToAst.o"
-	@echo "... src/SqlToAst/SqlToAst.i"
-	@echo "... src/SqlToAst/SqlToAst.s"
-	@echo "... src/petite.o"
-	@echo "... src/petite.i"
-	@echo "... src/petite.s"
+	@echo "... SQL_AST"
+	@echo "... sql_to_ast"
 .PHONY : help
 
 

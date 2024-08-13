@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/PetiteDB.dir/src/SqlToAst/SqlToAst.cpp.o CMakeFiles/PetiteDB.dir/src/petite.cpp.o -o PetiteDB  -lsqlparser -lstdc++

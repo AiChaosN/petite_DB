@@ -44,7 +44,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/aichaos/mylab/demodb/petite_DB/build/third_party/sql-parser/cmake_install.cmake")
+  include("/home/aichaos/mylab/demodb/petite_DB/build/third_party/cmake_install.cmake")
+  include("/home/aichaos/mylab/demodb/petite_DB/build/src/cmake_install.cmake")
+  include("/home/aichaos/mylab/demodb/petite_DB/build/tools/cmake_install.cmake")
 
 endif()
 

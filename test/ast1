@@ -1,5 +1,5 @@
 Parsed successfully!
-SQL0----正在解析----
+SQL = 0----正在解析----
 SELECT statement found
   SELECT list:
     *
@@ -10,8 +10,8 @@ WHERE clause:
       Column: id
       Literal int: 1
 
-SQL0----解析完毕----
-SQL1----正在解析----
+SQL = 0----解析完毕----
+SQL = 1----正在解析----
 SELECT statement found
   SELECT list:
     *
@@ -22,8 +22,8 @@ WHERE clause:
       Column: id
       Literal int: 5
 
-SQL1----解析完毕----
-SQL2----正在解析----
+SQL = 1----解析完毕----
+SQL = 2----正在解析----
 SELECT statement found
   SELECT list:
     *
@@ -34,4 +34,4 @@ WHERE clause:
       Column: id
       Literal int: 9
 
-SQL2----解析完毕----
+SQL = 2----解析完毕----

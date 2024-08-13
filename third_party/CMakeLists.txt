@@ -1,1 +1,1 @@
-add_subdirectory(spl-parser)
+# add_subdirectory(sql-parser)

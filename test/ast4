@@ -1,5 +1,5 @@
 Parsed successfully!
-SQL0----正在解析----
+SQL = 0----正在解析----
 SELECT statement found
   SELECT list:
     Column: t1.col1
@@ -32,4 +32,4 @@ WHERE clause:
       Column: t1.col4
       Literal string: example
 
-SQL0----解析完毕----
+SQL = 0----解析完毕----

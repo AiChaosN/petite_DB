@@ -1,5 +1,5 @@
 Parsed successfully!
-SQL0----正在解析----
+SQL = 0----正在解析----
 SELECT statement found
   SELECT list:
     Column: t1.col1
@@ -41,4 +41,4 @@ WHERE clause:
 ORDER BY:
     Column: t3.col6
  DESC
-SQL0----解析完毕----
+SQL = 0----解析完毕----
