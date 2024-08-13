@@ -10,7 +10,7 @@ public:
     SqlToAst(const std::string& filePath);
     bool parseSql();
     void printAst(const std::string& outputFilePath);
-
+    hsql::SQLParserResult getResult() const;
 private:
     std::string filePath_;
     hsql::SQLParserResult result_;
