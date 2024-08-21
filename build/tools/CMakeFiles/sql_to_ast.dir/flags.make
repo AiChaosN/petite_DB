@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/aichaos/mylab/demodb/petite_DB/include -I/home/aichaos/mylab/demodb/petite_DB/third_party/sql-parser/src
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -g -std=gnu++11
 

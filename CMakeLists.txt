@@ -4,6 +4,10 @@ project(PetiteDB)
 # 编译设置
 set(CMAKE_CXX_STANDARD 11)
 
+# 设置编译选项
+# debug
+set(CMAKE_BUILD_TYPE Debug)
+
 
 # # 设置LLVM的路径
 # set(LLVM_DIR "/home/aichaos/mylab/demodb/llvm-project/build/lib/cmake/llvm")

@@ -30,7 +30,8 @@ int main(int argc, char* argv[]) {
     //==================== AST 转 MLIR ====================
 
     //获取AST
-
+    auto const petiteAst = sqlToAst.getResult();
+    std::cout << "AST转换MLIR阶段开始...." << std::endl;
     //此处需要实现AST 转 MLIR的代码
 
     //使用mlirGen函数将AST转换为MLIR
